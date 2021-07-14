@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "746692892468",
+    "project_id": "test-beauty-bell",
+    "storage_bucket": "test-beauty-bell.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:746692892468:android:502c55ae84df99460e7761",
+        "android_client_info": {
+          "package_name": "com.example.beautybell"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "746692892468-2772ftjc9s6prulbcb6k1f82vegh74rb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.beautybell",
+            "certificate_hash": "d189a0c85d8a66255a68e4a15c199b36754f799f"
+          }
+        },
+        {
+          "client_id": "746692892468-u5k2ocimseddodt8v78t6elvbetq69du.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsjRvR7UiVi8Kb_3ThTG2YbFXq4mRV_4A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "746692892468-u5k2ocimseddodt8v78t6elvbetq69du.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

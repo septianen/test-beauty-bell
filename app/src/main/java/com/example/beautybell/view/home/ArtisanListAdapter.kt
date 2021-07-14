@@ -14,7 +14,7 @@ import com.example.beautybell.R
 import com.example.beautybell.data.model.Artisan
 import com.example.beautybell.view.artisan.ArtisanActivity
 
-class ArtisanListAdapter(private var a: MutableList<Artisan>) :
+class ArtisanListAdapter(private val a: MutableList<Artisan>) :
     RecyclerView.Adapter<ArtisanListAdapter.ViewHolder>() {
 
     private var context: Context? = null
@@ -26,14 +26,9 @@ class ArtisanListAdapter(private var a: MutableList<Artisan>) :
         val tvDescription = view.findViewById(R.id.tvDescription) as TextView
         val ivProfile = view.findViewById(R.id.ivProfile) as ImageView
 
-        init {
-            // Define click listener for the ViewHolder's View.
-        }
     }
 
-    // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.list_artisan_single_item, viewGroup, false)
 
@@ -42,11 +37,7 @@ class ArtisanListAdapter(private var a: MutableList<Artisan>) :
         return ViewHolder(view)
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-
-        // Get element from your dataset at this position and replace the
-        // contents of the view with that element
         viewHolder.tvName.text = artisanList[position].name
         viewHolder.tvDescription.text = artisanList[position].description
         Glide.with(context!!).load(artisanList[position].avatar).apply(RequestOptions().centerCrop()).into(viewHolder.ivProfile)
@@ -56,7 +47,6 @@ class ArtisanListAdapter(private var a: MutableList<Artisan>) :
         }
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = artisanList.size
 
     fun updateList(artisans: MutableList<Artisan>) {

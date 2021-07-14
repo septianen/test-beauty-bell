@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">BeautyBell</string>
+
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login_manual">Login Manual</string>
+    <string name="login">Login</string>
+    <string name="google_login">Google Login</string>
+    <string name="facebook_login">Facebook</string>
+    <string name="username_error">Isi Username</string>
+    <string name="password_error">Isi Password</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="list_of_artisan">List of Artisan</string>
+    <string name="name">Name</string>
+    <string name="birthday">Birthday</string>
+    <string name="email">Email</string>
+    <string name="services">Services</string>
+    <string name="description">Description</string>
+    <string name="price">Price</string>
+    <string name="caption">Caption</string>
 </resources>

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -14,7 +15,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.beautybell.R
 import com.example.beautybell.databinding.ActivityArtisanBinding
-import com.example.beautybell.view.home.ArtisanListAdapter
 import com.example.beautybell.viewmodel.ArtisanViewModel
 
 class ArtisanActivity : AppCompatActivity() {
@@ -47,13 +47,13 @@ class ArtisanActivity : AppCompatActivity() {
         liveDataObserver()
 
         viewModel.fetchArtisan(id?: "0")
+        binding.progressBar.visibility = View.VISIBLE
     }
 
     private fun liveDataObserver() {
         viewModel.artisalLiveData.observe(this, Observer {
-//            hideLoading()
-//            MainActivity.startActivity(this)
-            Toast.makeText(this, "data : ${it.services?.get(0)?.name}", Toast.LENGTH_SHORT).show()
+
+            binding.progressBar.visibility = View.GONE
 
             val linearLayoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
             binding.rvService.layoutManager = linearLayoutManager
@@ -66,8 +66,8 @@ class ArtisanActivity : AppCompatActivity() {
         })
 
         viewModel.errorArtisanLiveData.observe(this, Observer {
-//            hideLoading()
-//            showMessage(it.message)
+            binding.progressBar.visibility = View.VISIBLE
+            Toast.makeText(this, "Something Error", Toast.LENGTH_SHORT).show()
         })
     }
 }

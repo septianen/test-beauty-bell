@@ -2,7 +2,6 @@ package com.example.beautybell.data.network.repository
 
 import android.content.Context
 import com.example.beautybell.data.model.Artisan
-import com.example.beautybell.data.model.ResponseArtisanList
 import com.example.beautybell.data.network.ApiObserver
 import com.example.beautybell.data.network.ApiService
 import io.reactivex.android.schedulers.AndroidSchedulers

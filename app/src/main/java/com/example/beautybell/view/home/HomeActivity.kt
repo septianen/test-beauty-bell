@@ -1,7 +1,10 @@
 package com.example.beautybell.view.home
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
@@ -20,6 +23,13 @@ class HomeActivity : AppCompatActivity() {
 
     private var artisanListAdapter: ArtisanListAdapter? = null
 
+    companion object {
+        fun startActivity(sourceActivity: Context) {
+            val intent = Intent(sourceActivity, HomeActivity::class.java)
+            sourceActivity.startActivity(intent)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
@@ -29,22 +39,22 @@ class HomeActivity : AppCompatActivity() {
         liveDataObserver()
 
         viewModel.fetchArtisanList()
+        binding.progressBar.visibility = View.VISIBLE
     }
 
     private fun liveDataObserver() {
         viewModel.artisalListLiveData.observe(this, Observer {
-//            hideLoading()
-//            MainActivity.startActivity(this)
+            binding.progressBar.visibility = View.GONE
 
             val artisanList = it
-
             artisanListAdapter = ArtisanListAdapter(artisanList)
             val linearLayoutManager = LinearLayoutManager(this)
             binding.rvArtisan.layoutManager = linearLayoutManager
             binding.rvArtisan.adapter = artisanListAdapter
 
-            var newList: MutableList<Artisan>? = ArrayList()
             binding.etSearch.addTextChangedListener { b ->
+
+                var newList: MutableList<Artisan>? = ArrayList()
 
                 for(a: Artisan in artisanList) {
                     if (a.name?.contains(b.toString())!!) {
@@ -58,8 +68,8 @@ class HomeActivity : AppCompatActivity() {
         })
 
         viewModel.errorArtisanListLiveData.observe(this, Observer {
-//            hideLoading()
-//            showMessage(it.message)
+            binding.progressBar.visibility = View.GONE
+            Toast.makeText(this, "Something Error", Toast.LENGTH_SHORT).show()
         })
     }
 }

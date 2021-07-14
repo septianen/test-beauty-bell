@@ -1,29 +1,25 @@
-package com.example.beautybell.view.home
+package com.example.beautybell.view.artisan
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.example.beautybell.R
-import com.example.beautybell.data.model.Artisan
-import com.example.beautybell.view.artisan.ArtisanActivity
+import com.example.beautybell.data.model.Service
 
-class ArtisanListAdapter(private val artisanList: MutableList<Artisan>) :
-    RecyclerView.Adapter<ArtisanListAdapter.ViewHolder>() {
+class ServiceListAdapter(private val serviceList: MutableList<Service>) :
+    RecyclerView.Adapter<ServiceListAdapter.ViewHolder>() {
 
     private var context: Context? = null
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val clParent = view.findViewById(R.id.clParent) as ConstraintLayout
         val tvName = view.findViewById(R.id.tvName) as TextView
-        val tvDescription = view.findViewById(R.id.tvDescription) as TextView
-        val ivProfile = view.findViewById(R.id.ivProfile) as ImageView
+        val tvPrice = view.findViewById(R.id.tvPrice) as TextView
+        val tvCaption = view.findViewById(R.id.tvCaption) as TextView
 
         init {
             // Define click listener for the ViewHolder's View.
@@ -34,7 +30,7 @@ class ArtisanListAdapter(private val artisanList: MutableList<Artisan>) :
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.list_artisan_single_item, viewGroup, false)
+            .inflate(R.layout.list_service_single_item, viewGroup, false)
 
         context = viewGroup.context
 
@@ -46,16 +42,12 @@ class ArtisanListAdapter(private val artisanList: MutableList<Artisan>) :
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.tvName.text = artisanList[position].name
-        viewHolder.tvDescription.text = artisanList[position].description
-        Glide.with(context!!).load(artisanList[position].avatar).apply(RequestOptions().centerCrop()).into(viewHolder.ivProfile)
-
-        viewHolder.clParent.setOnClickListener {
-            ArtisanActivity.startActivity(context!!, artisanList[position].id!!)
-        }
+        viewHolder.tvName.text = serviceList[position].name
+        viewHolder.tvPrice.text = serviceList[position].price
+        viewHolder.tvCaption.text = serviceList[position].caption
     }
 
     // Return the size of your dataset (invoked by the layout manager)
-    override fun getItemCount() = artisanList.size
+    override fun getItemCount() = serviceList.size
 
 }

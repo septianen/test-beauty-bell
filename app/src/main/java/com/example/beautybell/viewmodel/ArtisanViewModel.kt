@@ -7,7 +7,7 @@ import com.example.beautybell.data.model.Artisan
 import com.example.beautybell.data.model.ResponseArtisanList
 import com.example.beautybell.data.network.repository.ArtisanRepository
 
-class HomeViewModel(application: Application): AndroidViewModel(application) {
+class ArtisanViewModel(application: Application): AndroidViewModel(application) {
 
     private val repository = ArtisanRepository(application.applicationContext.applicationContext)
     private val context = application.applicationContext.applicationContext

@@ -3,6 +3,9 @@ package com.example.beautybell.data.model
 import com.google.gson.annotations.SerializedName
 
 class Artisan {
+    @SerializedName("id")
+    val id: String? = null
+
     @SerializedName("name")
     val name: String? = null
 
@@ -22,5 +25,5 @@ class Artisan {
     val description: String? = null
 
     @SerializedName("services")
-    val services: List<Service>? = null
+    val services: MutableList<Service>? = null
 }

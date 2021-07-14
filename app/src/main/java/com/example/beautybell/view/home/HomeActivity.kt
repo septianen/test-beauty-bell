@@ -8,20 +8,19 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.beautybell.R
-import com.example.beautybell.data.model.Artisan
 import com.example.beautybell.databinding.ActivityHomeBinding
-import com.example.beautybell.viewmodel.HomeViewModel
+import com.example.beautybell.viewmodel.ArtisanViewModel
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var viewModel: HomeViewModel
+    private lateinit var viewModel: ArtisanViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
 
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(ArtisanViewModel::class.java)
 
         liveDataObserver()
 

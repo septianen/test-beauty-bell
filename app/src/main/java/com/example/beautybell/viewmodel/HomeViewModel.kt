@@ -12,7 +12,7 @@ class HomeViewModel(application: Application): AndroidViewModel(application) {
     private val repository = ArtisanRepository(application.applicationContext.applicationContext)
     private val context = application.applicationContext.applicationContext
 
-    var artisalListLiveData: MutableLiveData<ResponseArtisanList> = MutableLiveData()
+    var artisalListLiveData: MutableLiveData<MutableList<Artisan>> = MutableLiveData()
     var artisalLiveData: MutableLiveData<Artisan> = MutableLiveData()
 
     var errorArtisanListLiveData: MutableLiveData<Throwable> = MutableLiveData()

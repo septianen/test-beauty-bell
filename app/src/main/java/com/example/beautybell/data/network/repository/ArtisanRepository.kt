@@ -15,14 +15,14 @@ class ArtisanRepository(context: Context) {
     private val apiService = ApiService.buildRetrofit(context)
 
     fun fetchListArtisan(
-        onResult: (ResponseArtisanList) -> Unit,
+        onResult: (MutableList<Artisan>) -> Unit,
         onError: (Throwable) -> Unit) {
 
         apiService.fetchListArtisan()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : ApiObserver<ResponseArtisanList>(compositeDisposable) {
-                override fun onApiSuccess(data: ResponseArtisanList) {
+            .subscribe(object : ApiObserver<MutableList<Artisan>>(compositeDisposable) {
+                override fun onApiSuccess(data: MutableList<Artisan>) {
                     onResult(data)
                 }
 

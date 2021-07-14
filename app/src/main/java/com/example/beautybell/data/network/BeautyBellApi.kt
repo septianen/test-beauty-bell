@@ -9,7 +9,7 @@ import retrofit2.http.Path
 interface BeautyBellApi {
 
     @GET("list-artisan")
-    fun fetchListArtisan(): Observable<ResponseArtisanList>
+    fun fetchListArtisan(): Observable<MutableList<Artisan>>
 
     @GET("list-artisan/{id}")
     fun fetchArtisan(

@@ -14,10 +14,11 @@ import com.example.beautybell.R
 import com.example.beautybell.data.model.Artisan
 import com.example.beautybell.view.artisan.ArtisanActivity
 
-class ArtisanListAdapter(private val artisanList: MutableList<Artisan>) :
+class ArtisanListAdapter(private var a: MutableList<Artisan>) :
     RecyclerView.Adapter<ArtisanListAdapter.ViewHolder>() {
 
     private var context: Context? = null
+    private var artisanList = a
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val clParent = view.findViewById(R.id.clParent) as ConstraintLayout
@@ -58,4 +59,8 @@ class ArtisanListAdapter(private val artisanList: MutableList<Artisan>) :
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = artisanList.size
 
+    fun updateList(artisans: MutableList<Artisan>) {
+        artisanList = artisans
+        notifyDataSetChanged()
+    }
 }
